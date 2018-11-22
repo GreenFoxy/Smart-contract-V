@@ -29,4 +29,4 @@ Integer Overflow
 
 There exists a integer overflow at (\*). 
 
-For example, if the master calls this function with *users.length* = 2, and *value* = 2^255, then the *totalValue* will be small enough to bypass the check at (\*\*), and finally transfer a huge amout of balance to arbitrary users.
+For example, if the master calls this function with *users.length* = 2, and *value* = 2^255, the *totalValue* will be small enough to bypass the check at (\*\*), and then result in transfering a large amounts of balance to arbitrary users.
