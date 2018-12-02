@@ -2,6 +2,8 @@ https://etherscan.io/address/0x7367a68039d4704f30bfbf6d948020c3b07dfc59#code
 
 Integer Overflow
 
+CVE-2018-19460
+
     
     function creditEqually(address[] users, uint256 value) public onlyMaster returns (bool) {
         uint256 balance = balances[msg.sender];
