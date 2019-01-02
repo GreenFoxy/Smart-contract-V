@@ -17,5 +17,6 @@ Integer Overflow
       
 There exists a integer overflow at line 5 `require(msg.value >= item.cost * _amount);`.
 
-For example, if one of the `item`'s `item.cost` is set to 100, and someone call this function with `_amount` = 2^256/100, then the result of mul operation at line 5 will be 0, and the assertion of `msg.value >= item.cost * _amount` will always stand.
+For example, if one of the `item`'s `item.cost` is set to 100, and someone call this function with `_amount` = 2^256/100, then the result of mul operation at line 5 will be 0, and the assertion of `(msg.value >= item.cost * _amount)` will always stand.
  
+That means, with carefully constructed `_amount`, you can bypass the check at line 5 with only few or even 0 ether! Then it will transfer the tokens in the contract at position `item.itemContract` hold by itself to you with the amount of `_amount`(line 7,8).
