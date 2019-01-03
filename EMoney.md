@@ -16,4 +16,4 @@ Integer Overflow
 
 There exists a integer overflow in function sell().
 
-If the owner set the value of `sellPrice` to a large number like 2^255 in setPrices(), then the `(amount * sellPrice)` in `sell()` will cause a integer overflow and get a result much less than expeted if `amount > 1`.
+If the owner set the value of `sellPrice` to a large number like 2^255 in setPrices(), then the `(amount * sellPrice)` in `sell()` will cause a integer overflow and finally the user calling `sell()` to sell tokens will get ethers much less than expeted if `amount > 1`.
