@@ -8,7 +8,7 @@ Bad randomness
 
 Abstract
 ------
-A gambling smart contract implementation for Ethraffle_v4b, an Ethereum gambling game, sells tickets and after the last ticket in a round was sold randomly generates a winner from all the buyers who will claim the price, generates a random value that is predictable by attacker. The developer wrote a `chooseWinner()` function that uses block coinbase and difficulty as the seed. This can be predicted by writing the same random function code in an exploit contract to determine the `winningNumber` value.
+A gambling smart contract implementation for Ethraffle_v4b, an Ethereum gambling game, sells tickets and after the last ticket in a round was sold randomly generates a winner from all the buyers who will claim the price, generates a random value that is predictable by attacker. The developer wrote a `chooseWinner()` function that uses block coinbase and difficulty as the seed. This can be predicted by writing the same random function code in an exploit contract to determine the `winningNumber` value, thus the attacker can always win.
 
 Related code
 ------
