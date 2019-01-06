@@ -50,7 +50,7 @@ Exploit
             address addr;
             uint raffleId;
         }
-        //The data of this mapping can be accessed from the chain. We treat it as known here.
+        //The data of this mapping can be accessed from the chain.
         mapping (uint => Contestant) contestants;
         
         uint constant totalTickets = 50;
