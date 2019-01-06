@@ -54,7 +54,7 @@ Exploit
 		      uint b = block.number;
 		      uint timestamp = block.timestamp;
 		      return uint8(uint256(keccak256(block.blockhash(b), player, cardNumber, timestamp)) % 52);
-	  }
+        }
     
     
         function go_deal(uint256 _amount) public{
