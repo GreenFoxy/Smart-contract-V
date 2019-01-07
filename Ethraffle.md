@@ -1,4 +1,4 @@
-Ethraffle_v4b
+Ethraffle
 ======
 https://etherscan.io/address/0x9A3dA065e1100a5613dc15b594f0F6193B419E96#code
 
