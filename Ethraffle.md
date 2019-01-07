@@ -38,7 +38,7 @@ Related code
 
 Details
 ------
-After all tickets in a round(6 ticket for a round) was sold, `chooseWinner()` randomly generates a winner from all buyers. However, `block.coinbase` and `remainingGas` can be accessed before the transaction, so the result can be determined in an attack contract.
+After all tickets in a round(50 ticket for a round) was sold, `chooseWinner()` randomly generates a winner from all buyers. However, the seed of randomness, `block.coinbase` and `remainingGas`, can be accessed before the transaction, so the attacker can exploit this vulnerability to always win in the game.
 
 Exploit
 ------
