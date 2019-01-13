@@ -5,6 +5,7 @@ https://etherscan.io/address/0xb5766f61911f8b520b0e938aae100834aa3048c6#code
 Vulnerability type
 ------
 Integer overflow
+
 Bad randomness
 
 Abstract
