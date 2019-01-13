@@ -6,7 +6,7 @@ Vulnerability type
 ------
 Integer overflow
 
-Bad randomness
+Reentry
 
 Abstract
 ------
