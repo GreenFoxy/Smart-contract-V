@@ -103,13 +103,11 @@ Proof of concept
 
 ![1.png](./picture/1.png "")
 
-2) Attacker sets `victim` in his Attack contract, and calls `step1(uint256 amount)` with 10 ethers and amount = 8 ethers
-
-So now we can see that 2 ethers are left in Attack contract, and... 
+2) Attacker sets `victim` in his Attack contract, and calls `step1(uint256 amount)` with 10 ethers and amount = 8 ethers. Now we can see that 2 ethers are left in Attack contract. 
 
 ![2.png](./picture/2.png "")
 
-3) And the bounty of Attack contract is 8 ethers, and `totalBountyAmount` is set to 38 ethers.
+3) And the bounty of Attack contract is 8 ethers, `totalBountyAmount` is set to 38 ethers.
 
 ![3.png](./picture/3.png "")
 
