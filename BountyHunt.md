@@ -115,7 +115,7 @@ Proof of concept
 
 ![4.png](./picture/4.png "")
 
-### Now attacker calls `step2()` and gets 16 ethers back!
+### Now attacker calls `step2()` to exploit the reentry vulnerability and gets 16 ethers back!
 ![6.png](./picture/6.png "")
 
 ![5.png](./picture/5.png "")
