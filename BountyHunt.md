@@ -111,7 +111,7 @@ And the bounty of Attack contract is 8 ethers, `totalBountyAmount` is set to 38 
 
 ![3.png](./picture/3.png "")
 
-3) Attacker calls `grantBounty()` with a well-constructed `amount` to exploit the integer overflow vulnerability and set `totalBountyAmount` to 29 ethers.
+3) Attacker calls `grantBounty()` with a well-constructed `amount` to exploit the integer overflow vulnerability and set `totalBountyAmount` to 29 ethers. With this `totalBountyAmount`, the assertion of `this.balance >= totalBountyAmount` will always hold during excuting `step2()`.
 
 ![4.png](./picture/4.png "")
 
