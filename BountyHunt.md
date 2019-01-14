@@ -12,7 +12,7 @@ Abstract
 ------
 A smart contract implement for BountyHunt, allows users to call `grantBounty(address beneficiary, uint amount)` to save ethers as bounty in this contract and appoint the beneficiary who will be able to claim this bounty by calling `claimBounty()`.
 
-For the safety of bounty in this contract, the owner use modifier `preventTheft` to prevent attacks. However, there exist an integer overflow vulnerability which makes it possible to bypass the modifier `preventTheft`. After that, attackers can exploit the reentry vulnerability to steal bounty stored in this contract.
+For the safety of bounty in this contract, the owner uses modifier `preventTheft` to prevent attacks. However, there exists an integer overflow vulnerability which makes it possible to bypass the modifier `preventTheft`. After that, attackers can exploit the reentry vulnerability to steal bounty stored in this contract.
 
 Related Code
 ------
