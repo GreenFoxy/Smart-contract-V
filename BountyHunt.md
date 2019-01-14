@@ -103,7 +103,7 @@ Proof of concept
 
 ![1.png](./picture/1.png "")
 
-2) Attacker sets `victim` in his Attack contract, and calls `step1(uint256 amount)` with 10 ethers and amount = 8 ethers. Now we can see that 2 ethers are left in Attack contract. 
+2) Attacker sets `victim` in his Attack contract, and calls `step1(uint256 amount)` with 10 ethers and amount = 8 ethers. We can see that 2 ethers are left in Attack contract. 
 
 ![2.png](./picture/2.png "")
 
