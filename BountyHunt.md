@@ -87,13 +87,15 @@ Exploit
     }
     
     contract BountyHunt{
-      mapping(address => uint) public bountyAmount;
-      uint public totalBountyAmount;
-      modifier preventTheft {
-        _;  
-        if (this.balance < totalBountyAmount) throw;
-      }
-      function grantBounty(address beneficiary, uint amount) payable preventTheft {}
-      function claimBounty() preventTheft {}
-      function transferBounty(address to, uint value) preventTheft {}
+        mapping(address => uint) public bountyAmount;
+        uint public totalBountyAmount;
+        modifier preventTheft {
+            _;  
+            if (this.balance < totalBountyAmount) throw;
+        }
+        function grantBounty(address beneficiary, uint amount) payable preventTheft {}
+        function claimBounty() preventTheft {}
     }
+
+Proof of concept
+------
