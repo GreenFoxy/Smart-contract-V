@@ -99,23 +99,26 @@ Exploit
 
 Proof of concept
 ------
-### A normal user calls grantBounty() with 30 ethers as bounty. `totalBountyAmount` is set to 30 ethers.
+1) A normal user calls grantBounty() with 30 ethers as bounty. `totalBountyAmount` is set to 30 ethers.
 
 ![1.png](./picture/1.png "")
 
-### Attacker sets `victim` in his Attack contract, and call `step1(8 ethers)` with 10 ethers.
+2) Attacker sets `victim` in his Attack contract, and calls `step1(uint256 amount)` with 10 ethers and amount = 8 ethers
+
+So now we can see that 2 ethers are left in Attack contract, and... 
 
 ![2.png](./picture/2.png "")
 
-### So now the bounty of Attack contract is 8 ethers, and `totalBountyAmount` is set to 38 ethers.
+3) And the bounty of Attack contract is 8 ethers, and `totalBountyAmount` is set to 38 ethers.
 
 ![3.png](./picture/3.png "")
 
-### Attacker calls `grantBounty()` with a well-constructed `amount` to exploit the integer overflow vulnerability and set `totalBountyAmount` to 29 ethers.
+4) Attacker calls `grantBounty()` with a well-constructed `amount` to exploit the integer overflow vulnerability and set `totalBountyAmount` to 29 ethers.
 
 ![4.png](./picture/4.png "")
 
-### Now attacker calls `step2()` to exploit the reentry vulnerability and gets 16 ethers back!
+5) Now attacker calls `step2()` to exploit the reentry vulnerability and gets 16 ethers back!
+
 ![6.png](./picture/6.png "")
 
 ![5.png](./picture/5.png "")
