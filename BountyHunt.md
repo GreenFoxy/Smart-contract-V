@@ -115,9 +115,11 @@ And the bounty of Attack contract is 8 ethers, `totalBountyAmount` is set to 38 
 
 ![4.png](./picture/4.png "")
 
-4) Now attacker calls `step2()` to exploit the reentry vulnerability and gets 16 ethers back!
+4) Now attacker calls `step2()` to exploit the reentry vulnerability...
 
 ![6.png](./picture/6.png "")
+
+ and gets 16 ethers back!
 
 ![5.png](./picture/5.png "")
 
