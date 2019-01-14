@@ -107,15 +107,15 @@ Proof of concept
 
 ![2.png](./picture/2.png "")
 
-3) And the bounty of Attack contract is 8 ethers, `totalBountyAmount` is set to 38 ethers.
+And the bounty of Attack contract is 8 ethers, `totalBountyAmount` is set to 38 ethers.
 
 ![3.png](./picture/3.png "")
 
-4) Attacker calls `grantBounty()` with a well-constructed `amount` to exploit the integer overflow vulnerability and set `totalBountyAmount` to 29 ethers.
+3) Attacker calls `grantBounty()` with a well-constructed `amount` to exploit the integer overflow vulnerability and set `totalBountyAmount` to 29 ethers.
 
 ![4.png](./picture/4.png "")
 
-5) Now attacker calls `step2()` to exploit the reentry vulnerability and gets 16 ethers back!
+4) Now attacker calls `step2()` to exploit the reentry vulnerability and gets 16 ethers back!
 
 ![6.png](./picture/6.png "")
 
